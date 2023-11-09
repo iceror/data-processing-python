@@ -13,12 +13,20 @@ unique_genre = df['playlist_genre'].unique()
 #   print(genre)
 
 # get most popular songs
-top_songs = df.sort_values(by='track_popularity', ascending=True)[['track_name', 'track_artist', 'track_popularity']]
+top_songs = df.sort_values(by='track_popularity', ascending=True)[['track_popularity', 'track_name', 'track_artist']]
 top_songs = top_songs.drop_duplicates(subset='track_name', keep='last')
 top_songs = top_songs.tail(10)
+print('Top Ten')
 print(top_songs)
 
 # get most danceable songs
+most_danceable_songs = df.sort_values(by='danceability', ascending=True)[[ 'danceability', 'track_name', 'track_artist']]
+most_danceable_songs = most_danceable_songs.drop_duplicates(subset='track_name')
+most_danceable_songs = most_danceable_songs.tail()
+print('Top Danceable songs')
+print(most_danceable_songs)
+# print(df.columns)
+
 # get most energy songs
 # get songs with higher and lower tempos
 # get shorter and longer songs
